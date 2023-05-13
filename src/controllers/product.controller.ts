@@ -5,6 +5,7 @@ import createProductService from "../services/product/createProduct.service";
 import { ICharacteristicRequest } from "../interfaces/characteristic.interface";
 import createCharacteristicService from "../services/product/createCharacteristic.service";
 import createAdditionalInfoService from "../services/product/createAdditionalInfo.service";
+import listProductsService from "../services/product/listProducts.service";
 import { IAditionalInfoRequest } from "../interfaces/aditionalInfo.interface";
 
 const createProductController = async (req: Request, res: Response) => {
@@ -49,15 +50,25 @@ const createProductCharacteristicController = async (
   req: Request,
   res: Response
 ) => {
-  const { text }: ICharacteristicRequest = req.body;
-  const { id } = req.params;
-
-  const characteristic = await createCharacteristicService({ text }, id);
-
-  res.status(200).json(characteristic);
-
   try {
+    const { text }: ICharacteristicRequest = req.body;
+    const { id } = req.params;
+
+    const characteristic = await createCharacteristicService({ text }, id);
+
+    res.status(200).json(characteristic);
     return res.status(200).json();
+  } catch (error) {
+    if (error instanceof AppError) {
+      handleError(error, res);
+    }
+  }
+};
+
+const listProductsController = async (req: Request, res: Response) => {
+  try {
+    const product = await listProductsService();
+    return res.status(200).json(product);
   } catch (error) {
     if (error instanceof AppError) {
       handleError(error, res);
@@ -69,4 +80,5 @@ export {
   createProductController,
   createProductAdditionalInfoController,
   createProductCharacteristicController,
+  listProductsController,
 };
