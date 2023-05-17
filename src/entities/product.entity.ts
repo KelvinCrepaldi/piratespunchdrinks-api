@@ -40,11 +40,13 @@ export class Product {
 
   @OneToMany(() => Characteristic, (characteristic) => characteristic.product, {
     nullable: true,
+    eager: true,
   })
   characteristic: Characteristic;
 
   @OneToMany(() => AditionalInfo, (aditional_info) => aditional_info.product, {
     nullable: true,
+    eager: true,
   })
   aditional_info: AditionalInfo;
 }
