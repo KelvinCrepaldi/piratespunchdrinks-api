@@ -9,6 +9,6 @@ export class AditionalInfo {
   @Column()
   text: string;
 
-  @ManyToOne(() => Product, { eager: true })
+  @ManyToOne(() => Product)
   product: Product;
 }

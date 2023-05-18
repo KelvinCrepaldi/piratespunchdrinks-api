@@ -7,6 +7,7 @@ import createCharacteristicService from "../services/product/createCharacteristi
 import createAdditionalInfoService from "../services/product/createAdditionalInfo.service";
 import listProductsService from "../services/product/listProducts.service";
 import { IAditionalInfoRequest } from "../interfaces/aditionalInfo.interface";
+import listProductsByCategoryService from "../services/product/listProductsbyCategory.service";
 
 const createProductController = async (req: Request, res: Response) => {
   try {
@@ -67,8 +68,15 @@ const createProductCharacteristicController = async (
 
 const listProductsController = async (req: Request, res: Response) => {
   try {
-    const product = await listProductsService();
-    return res.status(200).json(product);
+    const category = String(req.query.category);
+
+    if (category !== "undefined") {
+      const product = await listProductsByCategoryService({ category });
+      return res.status(200).json(product);
+    } else {
+      const product = await listProductsService();
+      return res.status(200).json(product);
+    }
   } catch (error) {
     if (error instanceof AppError) {
       handleError(error, res);
