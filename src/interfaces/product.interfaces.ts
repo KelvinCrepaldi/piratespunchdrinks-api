@@ -19,3 +19,7 @@ export interface IProduct {
   characteristic?: ICharacteristic;
   additional_info?: IAditionalInfo;
 }
+
+export interface IProductByCategoryRequest {
+  category: string;
+}

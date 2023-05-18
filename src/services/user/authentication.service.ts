@@ -1,6 +1,9 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/user.entity";
-import { IAuthenticationRequest } from "../../interfaces/authentication.interface";
+import {
+  IAuthenticationRequest,
+  IAuthenticationResponse,
+} from "../../interfaces/authentication.interface";
 import { AppError } from "../../errors/appErrors";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -9,7 +12,7 @@ import "dotenv/config";
 const authService = async ({
   email,
   password,
-}: IAuthenticationRequest): Promise<string> => {
+}: IAuthenticationRequest): Promise<IAuthenticationResponse> => {
   const usersRepository = AppDataSource.getRepository(User);
 
   const user = await usersRepository.findOne({ where: { email: email } });
@@ -25,14 +28,14 @@ const authService = async ({
   }
 
   const token = jwt.sign(
-    { email: user.email, adm: user.adm },
+    { id: user.id, adm: user.adm },
     process.env.SECRET_KEY as string,
     {
-      expiresIn: "1h",
+      expiresIn: process.env.TOKEN_EXPIRES_TIME,
     }
   );
 
-  return token;
+  return { token, user };
 };
 
 export default authService;
