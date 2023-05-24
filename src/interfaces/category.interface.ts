@@ -12,3 +12,7 @@ export interface ICategoryWithProductCount {
   name: string;
   productCount: number;
 }
+
+export interface IDeleteCategoryRequest {
+  id: string;
+}

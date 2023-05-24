@@ -11,8 +11,15 @@ import listProductsByCategoryService from "../services/product/listProductsbyCat
 
 const createProductController = async (req: Request, res: Response) => {
   try {
-    const { active, apresentation, categoryId, name, price }: IProductRequest =
-      req.body;
+    const {
+      active,
+      apresentation,
+      categoryId,
+      name,
+      price,
+      amount,
+      img_url,
+    }: IProductRequest = req.body;
 
     const product = await createProductService({
       active,
@@ -20,6 +27,8 @@ const createProductController = async (req: Request, res: Response) => {
       categoryId,
       name,
       price,
+      amount,
+      img_url,
     });
 
     return res.status(200).json(product);

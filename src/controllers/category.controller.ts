@@ -3,6 +3,7 @@ import { handleError, AppError } from "../errors/appErrors";
 import { ICategoryRequest } from "../interfaces/category.interface";
 import createCategoryService from "../services/category/createCategory.service";
 import listCategoryService from "../services/category/listCategory.service";
+import deleteCategoryService from "../services/category/deleteCategory.service";
 
 const createCategoryController = async (req: Request, res: Response) => {
   try {
@@ -27,4 +28,20 @@ const listCategoryController = async (req: Request, res: Response) => {
   }
 };
 
-export { createCategoryController, listCategoryController };
+const deleteCategoryController = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    await deleteCategoryService({ id });
+    return res.status(200).json();
+  } catch (error) {
+    if (error instanceof AppError) {
+      handleError(error, res);
+    }
+  }
+};
+
+export {
+  createCategoryController,
+  listCategoryController,
+  deleteCategoryController,
+};

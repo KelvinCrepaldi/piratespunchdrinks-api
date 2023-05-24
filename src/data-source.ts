@@ -9,6 +9,8 @@ import { Category } from "./entities/categories.entity";
 import { AditionalInfo } from "./entities/aditionalInfo.entity";
 import { UserTable1683865015862 } from "./migrations/1683865015862-userTable";
 import { CreateProductsTables1683968081000 } from "./migrations/1683968081000-createProductsTables";
+import { AddAmountProduct1684896645460 } from "./migrations/1684896645460-addAmountProduct";
+import { AddImgUrl1684897512384 } from "./migrations/1684897512384-addImgUrl";
 
 const AppDataSource = new DataSource({
   type: "postgres",
@@ -29,7 +31,12 @@ const AppDataSource = new DataSource({
     Category,
   ],
   subscribers: [],
-  migrations: [UserTable1683865015862, CreateProductsTables1683968081000],
+  migrations: [
+    UserTable1683865015862,
+    CreateProductsTables1683968081000,
+    AddAmountProduct1684896645460,
+    AddImgUrl1684897512384,
+  ],
 });
 
 AppDataSource.initialize()
