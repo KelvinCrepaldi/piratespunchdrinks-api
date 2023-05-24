@@ -6,6 +6,7 @@ export interface IProductRequest {
   name: string;
   price: string;
   amount: string;
+  img_url: string;
   apresentation: string;
   active: boolean;
   categoryId: string;
@@ -15,6 +16,7 @@ export interface IProduct {
   name: string;
   price: string;
   amount: string;
+  img_url: string;
   apresentation: string;
   active: boolean;
   category: ICategory | null;

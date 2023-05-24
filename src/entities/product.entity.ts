@@ -29,6 +29,9 @@ export class Product {
   @Column()
   apresentation: string;
 
+  @Column()
+  img_url: string;
+
   @CreateDateColumn()
   created_at: Date;
 

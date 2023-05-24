@@ -18,6 +18,7 @@ const createProductController = async (req: Request, res: Response) => {
       name,
       price,
       amount,
+      img_url,
     }: IProductRequest = req.body;
 
     const product = await createProductService({
@@ -27,6 +28,7 @@ const createProductController = async (req: Request, res: Response) => {
       name,
       price,
       amount,
+      img_url,
     });
 
     return res.status(200).json(product);
