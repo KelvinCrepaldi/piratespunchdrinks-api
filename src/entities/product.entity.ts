@@ -23,6 +23,9 @@ export class Product {
   @Column()
   price: string;
 
+  @Column({ nullable: true })
+  amount: string;
+
   @Column()
   apresentation: string;
 
@@ -36,7 +39,7 @@ export class Product {
   active: boolean;
 
   @ManyToOne(() => Category, { nullable: true, eager: true })
-  category: Category;
+  category: Category | null;
 
   @OneToMany(() => Characteristic, (characteristic) => characteristic.product, {
     nullable: true,

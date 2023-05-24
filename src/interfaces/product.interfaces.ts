@@ -5,6 +5,7 @@ import { IAditionalInfo } from "./aditionalInfo.interface";
 export interface IProductRequest {
   name: string;
   price: string;
+  amount: string;
   apresentation: string;
   active: boolean;
   categoryId: string;
@@ -13,9 +14,10 @@ export interface IProductRequest {
 export interface IProduct {
   name: string;
   price: string;
+  amount: string;
   apresentation: string;
   active: boolean;
-  category: ICategory;
+  category: ICategory | null;
   characteristic?: ICharacteristic;
   additional_info?: IAditionalInfo;
 }

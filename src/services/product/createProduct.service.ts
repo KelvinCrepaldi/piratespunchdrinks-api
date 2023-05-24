@@ -9,6 +9,7 @@ const createProductService = async ({
   categoryId,
   name,
   price,
+  amount,
 }: IProductRequest): Promise<IProduct> => {
   const productRepository = AppDataSource.getRepository(Product);
   const CategoryRepository = AppDataSource.getRepository(Category);
@@ -25,6 +26,7 @@ const createProductService = async ({
     active: true,
     name: name,
     price: price,
+    amount: amount,
     apresentation: apresentation,
     category: category,
   });
