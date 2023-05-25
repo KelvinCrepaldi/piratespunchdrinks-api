@@ -1,14 +1,14 @@
 import AppDataSource from "../../data-source";
 import {
   IAditionalInfo,
-  IAditionalInfoRequest,
+  IAdditionalInfoRequest,
 } from "../../interfaces/aditionalInfo.interface";
 import { AditionalInfo } from "../../entities/aditionalInfo.entity";
 import { Product } from "../../entities/product.entity";
 import { AppError } from "../../errors/appErrors";
 
 const createAdditionalInfoService = async (
-  { text }: IAditionalInfoRequest,
+  { text }: IAdditionalInfoRequest,
   id: string
 ): Promise<IAditionalInfo> => {
   const aditionalInfoRepository = AppDataSource.getRepository(AditionalInfo);

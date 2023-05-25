@@ -4,6 +4,7 @@ import {
   listProductsController,
   createProductAdditionalInfoController,
   createProductCharacteristicController,
+  seedProductsController,
 } from "../controllers/product.controller";
 
 const productRoutes = Router();
@@ -19,5 +20,7 @@ productRoutes.post(
 );
 
 productRoutes.get("/", listProductsController);
+
+productRoutes.post("/seedDatabase", seedProductsController);
 
 export default productRoutes;

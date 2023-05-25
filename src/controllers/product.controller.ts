@@ -6,32 +6,48 @@ import { ICharacteristicRequest } from "../interfaces/characteristic.interface";
 import createCharacteristicService from "../services/product/createCharacteristic.service";
 import createAdditionalInfoService from "../services/product/createAdditionalInfo.service";
 import listProductsService from "../services/product/listProducts.service";
-import { IAditionalInfoRequest } from "../interfaces/aditionalInfo.interface";
+import { IAdditionalInfoRequest } from "../interfaces/aditionalInfo.interface";
 import listProductsByCategoryService from "../services/product/listProductsbyCategory.service";
+import seedProductsService from "../services/product/seedProducts.service";
 
 const createProductController = async (req: Request, res: Response) => {
   try {
     const {
       active,
       apresentation,
-      categoryId,
+      category,
       name,
       price,
       amount,
       img_url,
+      additional_info,
+      characteristic,
     }: IProductRequest = req.body;
 
     const product = await createProductService({
       active,
       apresentation,
-      categoryId,
+      category,
       name,
       price,
       amount,
       img_url,
+      additional_info,
+      characteristic,
     });
 
     return res.status(200).json(product);
+  } catch (error) {
+    if (error instanceof AppError) {
+      handleError(error, res);
+    }
+  }
+};
+
+const seedProductsController = async (req: Request, res: Response) => {
+  try {
+    const seed = seedProductsService();
+    return res.status(200).json(seed);
   } catch (error) {
     if (error instanceof AppError) {
       handleError(error, res);
@@ -44,7 +60,7 @@ const createProductAdditionalInfoController = async (
   res: Response
 ) => {
   try {
-    const { text }: IAditionalInfoRequest = req.body;
+    const { text }: IAdditionalInfoRequest = req.body;
     const { id } = req.params;
 
     const aditionalInfo = await createAdditionalInfoService({ text }, id);
@@ -98,4 +114,5 @@ export {
   createProductAdditionalInfoController,
   createProductCharacteristicController,
   listProductsController,
+  seedProductsController,
 };
