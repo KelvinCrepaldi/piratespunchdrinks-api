@@ -1,0 +1,49 @@
+{
+  "categories": [
+    {
+      "name": "Alcoholic Beverages"
+    },
+    {
+      "name": "Non-Alcoholic Beverages"
+    },
+    {
+      "name": "Beer"
+    },
+    {
+      "name": "Whiskey"
+    },
+    {
+      "name": "Vodka"
+    },
+    {
+      "name": "Rum"
+    },
+    {
+      "name": "Sangria"
+    },
+    {
+      "name": "Mocktail"
+    },
+    {
+      "name": "Tequila"
+    },
+    {
+      "name": "Gin"
+    },
+    {
+      "name": "Wine"
+    },
+    {
+      "name": "Cider"
+    },
+    {
+      "name": "Cocktail"
+    },
+    {
+      "name": "Liqueur"
+    },
+    {
+      "name": "Sake"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { Product } from "../entities/product.entity";
-export interface IAditionalInfoRequest {
+export interface IAdditionalInfoRequest {
   text: string;
 }
 export interface IAditionalInfo {
