@@ -3,12 +3,6 @@ import { IProductRequest } from "../interfaces/product.interfaces";
 
 export const categorySeed: ICategoryRequest[] = [
   {
-    name: "Alcoholic Beverages",
-  },
-  {
-    name: "Non-Alcoholic Beverages",
-  },
-  {
     name: "Beer",
   },
   {

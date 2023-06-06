@@ -8,52 +8,66 @@ import { ICharacteristicRequest } from "../../interfaces/characteristic.interfac
 import { AditionalInfo } from "../../entities/aditionalInfo.entity";
 import { Characteristic } from "../../entities/characteristic.entity";
 import { Category } from "../../entities/categories.entity";
-export const seedProductsService = () => {
+import { AppError } from "../../errors/appErrors";
+
+export const seedProductsService = async () => {
   const productRepository = AppDataSource.getRepository(Product);
   const aditionalInfoRepository = AppDataSource.getRepository(AditionalInfo);
   const characteristicRepository = AppDataSource.getRepository(Characteristic);
   const categoryRepository = AppDataSource.getRepository(Category);
 
-  categorySeed.forEach(async (category: ICategoryRequest) => {
-    const newCategory = categoryRepository.create(category);
-
-    await categoryRepository.save(newCategory);
-  });
-
-  productsSeed.forEach(async (product: IProductRequest) => {
-    const findCategory = await categoryRepository.findOne({
-      where: { name: product.category },
-    });
-
-    const newProduct = productRepository.create({
-      active: true,
-      name: product.name,
-      price: product.price,
-      amount: product.amount,
-      img_url: product.img_url,
-      apresentation: product.apresentation,
-      category: findCategory,
-    });
-    await productRepository.save(newProduct);
-
-    product.characteristic?.forEach(async (element: ICharacteristicRequest) => {
-      const newChara = characteristicRepository.create({
-        text: element.text,
-        product: newProduct,
+  await Promise.all(
+    categorySeed.map(async (category: ICategoryRequest) => {
+      const newCategory = await categoryRepository.create({
+        name: category.name,
       });
-      await characteristicRepository.save(newChara);
-    });
+      console.log(newCategory);
+      await categoryRepository.save(newCategory);
+    })
+  );
 
-    product.additional_info?.forEach(
-      async (element: IAdditionalInfoRequest) => {
-        const newInfo = aditionalInfoRepository.create({
-          text: element.text,
-          product: newProduct,
-        });
-        await aditionalInfoRepository.save(newInfo);
+  await Promise.all(
+    productsSeed.map(async (product: IProductRequest) => {
+      const findCategory = await categoryRepository.findOne({
+        where: { name: product.category },
+      });
+
+      if (!findCategory) {
+        throw new AppError(403, "category not found");
       }
-    );
-  });
+
+      const newProduct = productRepository.create({
+        active: true,
+        name: product.name,
+        price: product.price,
+        amount: product.amount,
+        img_url: product.img_url,
+        apresentation: product.apresentation,
+        category: { name: findCategory?.name, id: findCategory?.id },
+      });
+      await productRepository.save(newProduct);
+
+      product.characteristic?.forEach(
+        async (element: ICharacteristicRequest) => {
+          const newChara = characteristicRepository.create({
+            text: element.text,
+            product: newProduct,
+          });
+          await characteristicRepository.save(newChara);
+        }
+      );
+
+      product.additional_info?.forEach(
+        async (element: IAdditionalInfoRequest) => {
+          const newInfo = aditionalInfoRepository.create({
+            text: element.text,
+            product: newProduct,
+          });
+          await aditionalInfoRepository.save(newInfo);
+        }
+      );
+    })
+  );
 
   return { message: "database populated!" };
 };

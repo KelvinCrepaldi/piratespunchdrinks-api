@@ -7,3 +7,14 @@ export interface IUserRequest {
   creditCard: ICreditCard;
   address: IAddress;
 }
+
+export interface IUserResponse {
+  name: string;
+  email: string;
+  creditCard: ICreditCard;
+  address: IAddress;
+}
+
+export interface IListUserRequest {
+  email: string;
+}
