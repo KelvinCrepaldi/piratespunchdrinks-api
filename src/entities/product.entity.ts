@@ -11,6 +11,7 @@ import {
 import { Category } from "./categories.entity";
 import { Characteristic } from "./characteristic.entity";
 import { AditionalInfo } from "./aditionalInfo.entity";
+import { OrderProducts } from "./cart.entity";
 
 @Entity("products")
 export class Product {
@@ -42,17 +43,22 @@ export class Product {
   active: boolean;
 
   @ManyToOne(() => Category, { nullable: true, eager: true })
-  category: Category | null;
+  category: Category;
 
   @OneToMany(() => Characteristic, (characteristic) => characteristic.product, {
     nullable: true,
     eager: true,
   })
-  characteristic: Characteristic;
+  characteristic: Characteristic[];
 
   @OneToMany(() => AditionalInfo, (aditional_info) => aditional_info.product, {
     nullable: true,
     eager: true,
   })
-  aditional_info: AditionalInfo;
+  aditional_info: AditionalInfo[];
+
+  @OneToMany(() => OrderProducts, (orderProducts) => orderProducts.product, {
+    nullable: true,
+  })
+  orderProducts: OrderProducts[];
 }
