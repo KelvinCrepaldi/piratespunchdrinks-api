@@ -1,13 +1,15 @@
 import { Request, Response } from "express";
 import { AppError, handleError } from "../errors/appErrors";
 import { IProductRequest } from "../interfaces/product.interfaces";
-import createProductService from "../services/product/createProduct.service";
 import { ICharacteristicRequest } from "../interfaces/characteristic.interface";
+import { IAdditionalInfoRequest } from "../interfaces/aditionalInfo.interface";
+
+import createProductService from "../services/product/createProduct.service";
 import createCharacteristicService from "../services/product/createCharacteristic.service";
 import createAdditionalInfoService from "../services/product/createAdditionalInfo.service";
 import listProductsService from "../services/product/listProducts.service";
-import { IAdditionalInfoRequest } from "../interfaces/aditionalInfo.interface";
 import listProductsByCategoryService from "../services/product/listProductsbyCategory.service";
+
 import seedProductsService from "../services/product/seedProducts.service";
 
 const createProductController = async (req: Request, res: Response) => {
