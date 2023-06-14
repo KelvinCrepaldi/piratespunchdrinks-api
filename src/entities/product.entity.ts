@@ -11,7 +11,7 @@ import {
 import { Category } from "./categories.entity";
 import { Characteristic } from "./characteristic.entity";
 import { AditionalInfo } from "./aditionalInfo.entity";
-import { OrderProducts } from "./cart.entity";
+import { OrderProducts } from "./orderProducts.entity";
 
 @Entity("products")
 export class Product {

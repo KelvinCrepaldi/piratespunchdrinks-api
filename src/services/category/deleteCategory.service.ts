@@ -20,7 +20,7 @@ const deleteCategoryService = async ({
   });
 
   const updateProducts = products.map((product) => {
-    product.category = null;
+    product.category === null;
     return productRepository.save(product);
   });
 

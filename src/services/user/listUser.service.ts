@@ -1,8 +1,5 @@
 import AppDataSource from "../../data-source";
-import {
-  IListUserRequest,
-  IUserResponse,
-} from "../../interfaces/user.interfaces";
+import { IListUserRequest } from "../../interfaces/user.interfaces";
 import { AppError } from "../../errors/appErrors";
 import { User } from "../../entities/user.entity";
 import { IAuthenticationRequest } from "../../interfaces/authentication.interface";

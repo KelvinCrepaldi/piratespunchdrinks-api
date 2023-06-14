@@ -7,7 +7,7 @@ import {
 
 const listProductsByCategoryService = ({
   category,
-}: IProductByCategoryRequest): Promise<IProduct[]> => {
+}: IProductByCategoryRequest): Promise<Product[]> => {
   const productsRepository = AppDataSource.getRepository(Product);
 
   const products = productsRepository.find({

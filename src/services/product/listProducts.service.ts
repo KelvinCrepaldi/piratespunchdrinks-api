@@ -1,7 +1,6 @@
 import AppDataSource from "../../data-source";
 import { Product } from "../../entities/product.entity";
-import { IProduct } from "../../interfaces/product.interfaces";
-const listProductsService = (): Promise<IProduct[]> => {
+const listProductsService = (): Promise<Product[]> => {
   const productsRepository = AppDataSource.getRepository(Product);
 
   const products = productsRepository.find();

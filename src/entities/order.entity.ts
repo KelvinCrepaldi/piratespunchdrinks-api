@@ -4,8 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   OneToMany,
+  ManyToOne,
 } from "typeorm";
-import { OrderProducts } from "./cart.entity";
+import { OrderProducts } from "./orderProducts.entity";
+import { User } from "./user.entity";
 
 @Entity("orders")
 export class Order {
@@ -29,7 +31,8 @@ export class Order {
 
   //credit_card
 
-  //user
+  @ManyToOne(() => User, { eager: true })
+  user: User;
 
   @OneToMany(() => OrderProducts, (orderProducts) => orderProducts.product, {
     nullable: true,

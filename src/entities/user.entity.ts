@@ -6,9 +6,11 @@ import {
   CreateDateColumn,
   JoinColumn,
   OneToOne,
+  OneToMany,
 } from "typeorm";
 import { Address } from "./address.entity";
 import { CreditCard } from "./creditCard.entity";
+import { Order } from "./order.entity";
 
 @Entity("users")
 export class User {
@@ -35,6 +37,11 @@ export class User {
 
   @Column()
   active: boolean;
+
+  @OneToMany(() => Order, (order) => order.user, {
+    nullable: true,
+  })
+  order: Order[];
 
   @OneToOne(() => Address, { eager: true })
   @JoinColumn()

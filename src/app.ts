@@ -7,6 +7,7 @@ import errorsMiddleware from "./middleware/errors.middleware";
 import verifyAuthTokenMiddleware from "./middleware/verifyAuthToken.middleware";
 import productRoutes from "./routes/product.routes";
 import categoryRoutes from "./routes/category.routes";
+import orderRoutes from "./routes/order.routes";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,6 +24,7 @@ app.use("/users", userRoutes);
 app.use("/login", sessionRoutes);
 app.use("/product", productRoutes);
 app.use("/category", categoryRoutes);
+app.use("/order", orderRoutes);
 app.use("/protected", verifyAuthTokenMiddleware, (req, res) => {
   res.status(200).json("protected route");
 });
