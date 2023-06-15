@@ -3,14 +3,11 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
-  ManyToMany,
   ManyToOne,
-  JoinTable,
   OneToMany,
 } from "typeorm";
 import { OrderProduct } from "./orderProduct.entity";
 import { User } from "./user.entity";
-import { Product } from "./product.entity";
 
 @Entity("orders")
 export class Order {
