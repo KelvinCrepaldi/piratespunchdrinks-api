@@ -2,7 +2,7 @@ import { ICategory } from "./category.interface";
 import { ICharacteristic } from "./characteristic.interface";
 import { IAditionalInfo } from "./aditionalInfo.interface";
 import { Product } from "../entities/product.entity";
-import { OrderProducts } from "../entities/orderProducts.entity";
+import { OrderProducts } from "../entities/orderProduct.entity";
 
 export interface IProductCharacteristic {
   text: string;

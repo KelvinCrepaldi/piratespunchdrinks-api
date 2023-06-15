@@ -33,7 +33,7 @@ export class User {
   createdAt: Date;
 
   @UpdateDateColumn()
-  updateAt: Date;
+  updatedAt: Date;
 
   @Column()
   active: boolean;
@@ -41,7 +41,7 @@ export class User {
   @OneToMany(() => Order, (order) => order.user, {
     nullable: true,
   })
-  order: Order[];
+  orders: Order[];
 
   @OneToOne(() => Address, { eager: true })
   @JoinColumn()

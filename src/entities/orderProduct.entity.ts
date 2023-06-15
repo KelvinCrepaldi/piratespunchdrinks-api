@@ -4,21 +4,22 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   ManyToOne,
+  JoinColumn,
 } from "typeorm";
 import { Product } from "./product.entity";
 import { Order } from "./order.entity";
 
 @Entity("order_products")
-export class OrderProducts {
+export class OrderProduct {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column()
   quantity: number;
 
-  @ManyToOne(() => Product, { eager: true })
-  product: Product;
-
-  @ManyToOne(() => Order)
+  @ManyToOne(() => Order, (order) => order.orderProducts)
   order: Order;
+
+  @ManyToOne(() => Product, (product) => product.orderProducts)
+  product: Product;
 }

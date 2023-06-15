@@ -11,7 +11,7 @@ import {
 import { Category } from "./categories.entity";
 import { Characteristic } from "./characteristic.entity";
 import { AditionalInfo } from "./aditionalInfo.entity";
-import { OrderProducts } from "./orderProducts.entity";
+import { OrderProduct } from "./orderProduct.entity";
 
 @Entity("products")
 export class Product {
@@ -57,8 +57,6 @@ export class Product {
   })
   aditional_info: AditionalInfo[];
 
-  @OneToMany(() => OrderProducts, (orderProducts) => orderProducts.product, {
-    nullable: true,
-  })
-  orderProducts: OrderProducts[];
+  @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.product)
+  orderProducts: OrderProduct[];
 }

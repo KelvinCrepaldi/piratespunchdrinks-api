@@ -8,14 +8,8 @@ import { Characteristic } from "./entities/characteristic.entity";
 import { Category } from "./entities/categories.entity";
 import { AditionalInfo } from "./entities/aditionalInfo.entity";
 import { Order } from "./entities/order.entity";
-import { OrderProducts } from "./entities/orderProducts.entity";
-
-import { UserTable1683865015862 } from "./migrations/1683865015862-userTable";
-import { CreateProductsTables1683968081000 } from "./migrations/1683968081000-createProductsTables";
-import { AddAmountProduct1684896645460 } from "./migrations/1684896645460-addAmountProduct";
-import { AddImgUrl1684897512384 } from "./migrations/1684897512384-addImgUrl";
-import { CartTables1686727926901 } from "./migrations/1686727926901-cartTables";
-import { FixCartTables1686728594216 } from "./migrations/1686728594216-fixCartTables";
+import { OrderProduct } from "./entities/orderProduct.entity";
+import { CreateTables1686804248545 } from "./migrations/1686804248545-createTables";
 
 const AppDataSource = new DataSource({
   type: "postgres",
@@ -35,17 +29,10 @@ const AppDataSource = new DataSource({
     AditionalInfo,
     Category,
     Order,
-    OrderProducts,
+    OrderProduct,
   ],
   subscribers: [],
-  migrations: [
-    UserTable1683865015862,
-    CreateProductsTables1683968081000,
-    AddAmountProduct1684896645460,
-    AddImgUrl1684897512384,
-    CartTables1686727926901,
-    FixCartTables1686728594216,
-  ],
+  migrations: [CreateTables1686804248545],
 });
 
 AppDataSource.initialize()

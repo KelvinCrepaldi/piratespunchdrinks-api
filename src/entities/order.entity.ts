@@ -3,11 +3,14 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
-  OneToMany,
+  ManyToMany,
   ManyToOne,
+  JoinTable,
+  OneToMany,
 } from "typeorm";
-import { OrderProducts } from "./orderProducts.entity";
+import { OrderProduct } from "./orderProduct.entity";
 import { User } from "./user.entity";
+import { Product } from "./product.entity";
 
 @Entity("orders")
 export class Order {
@@ -31,11 +34,9 @@ export class Order {
 
   //credit_card
 
-  @ManyToOne(() => User, { eager: true })
+  @ManyToOne(() => User, (user) => user.orders)
   user: User;
 
-  @OneToMany(() => OrderProducts, (orderProducts) => orderProducts.product, {
-    nullable: true,
-  })
-  orderProducts: OrderProducts;
+  @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.order)
+  orderProducts: OrderProduct[];
 }
