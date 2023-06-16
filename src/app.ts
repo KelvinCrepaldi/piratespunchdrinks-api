@@ -1,6 +1,9 @@
 import express from "express";
+import listEndpoints from "express-list-endpoints";
+import Table from "cli-table3";
 import "reflect-metadata";
 import "dotenv/config";
+
 import sessionRoutes from "./routes/session.routes";
 import userRoutes from "./routes/user.routes";
 import errorsMiddleware from "./middleware/errors.middleware";
@@ -31,6 +34,16 @@ app.use("/protected", verifyAuthTokenMiddleware, (req, res) => {
 
 app.use(errorsMiddleware);
 
+// Criação de tabela no console
+const routes = listEndpoints(app);
+const table = new Table({
+  head: ["Método", "Rota"],
+});
+routes.forEach((route) => {
+  table.push([route.methods.join(", "), route.path]);
+});
+
 app.listen(port, () => {
   console.log(`App running on port: ${port}`);
+  console.log(table.toString());
 });
