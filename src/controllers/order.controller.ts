@@ -1,13 +1,14 @@
 import { Request, Response } from "express";
 import { AppError, handleError } from "../errors/appErrors";
-import listOrdersService from "../services/order/listOrders.service";
-import { IOrderRequest } from "../interfaces/order.interface";
+import listOrderService from "../services/order/listOrders.service";
+import { IOrderRequest } from "../interfaces/order.interfaces";
 import createOrderService from "../services/order/createOrder.service";
+import { listUserOrdersService } from "../services/order/listUserOrders.service";
 
-const listOrdersController = async (req: Request, res: Response) => {
+const listOrderController = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params;
-    const order = await listOrdersService(userId);
+    const order = await listOrderService(userId);
     return res.status(200).json(order);
   } catch (err) {
     if (err instanceof AppError) {
@@ -28,4 +29,20 @@ const createOrderController = async (req: Request, res: Response) => {
   }
 };
 
-export { listOrdersController, createOrderController };
+const listUserOrdersController = async (req: Request, res: Response) => {
+  try {
+    const { userId } = req.params;
+
+    const id = userId;
+
+    const orders = await listUserOrdersService({ id });
+
+    res.status(200).json(orders);
+  } catch (err) {
+    if (err instanceof AppError) {
+      handleError(err, res);
+    }
+  }
+};
+
+export { listOrderController, createOrderController, listUserOrdersController };

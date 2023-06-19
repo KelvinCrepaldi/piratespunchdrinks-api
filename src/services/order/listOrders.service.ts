@@ -2,7 +2,7 @@ import AppDataSource from "../../data-source";
 import { Order } from "../../entities/order.entity";
 import { OrderProduct } from "../../entities/orderProduct.entity";
 
-const listOrdersService = async (id: string): Promise<any> => {
+const listOrderService = async (id: string): Promise<any> => {
   const orderRepository = AppDataSource.getRepository(Order);
 
   const order = await orderRepository
@@ -15,4 +15,4 @@ const listOrdersService = async (id: string): Promise<any> => {
   return order;
 };
 
-export default listOrdersService;
+export default listOrderService;

@@ -4,7 +4,7 @@ import { OrderProduct } from "../../entities/orderProduct.entity";
 import { Product } from "../../entities/product.entity";
 import { User } from "../../entities/user.entity";
 import { AppError } from "../../errors/appErrors";
-import { IOrderRequest } from "../../interfaces/order.interface";
+import { IOrderRequest } from "../../interfaces/order.interfaces";
 
 const createOrderService = async ({
   products,
@@ -24,7 +24,7 @@ const createOrderService = async ({
   }
 
   const order = new Order();
-  order.total = "0";
+  order.total = "";
   order.active_status = true;
   order.payment_status = false;
   order.expired = false;
