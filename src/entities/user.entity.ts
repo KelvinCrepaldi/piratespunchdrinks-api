@@ -43,8 +43,10 @@ export class User {
   })
   orders: Order[];
 
-  @OneToOne(() => Address, { eager: true })
-  @JoinColumn()
+  @OneToMany(() => Address, (address) => address.user, {
+    nullable: true,
+    eager: true,
+  })
   address: Address;
 
   @OneToOne(() => CreditCard, { eager: true })

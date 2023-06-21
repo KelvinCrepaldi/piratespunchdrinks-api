@@ -6,6 +6,9 @@ export class CreditCard {
   id: string;
 
   @Column()
+  name: string;
+
+  @Column()
   number: string;
 
   @Column()

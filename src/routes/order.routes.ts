@@ -4,10 +4,11 @@ import {
   listOrderController,
   listUserOrdersController,
 } from "../controllers/order.controller";
+import verifyAuthTokenMiddleware from "../middleware/verifyAuthToken.middleware";
 
 const orderRoutes = Router();
 
-orderRoutes.get("/:userId", listUserOrdersController);
-orderRoutes.post("/", createOrderController);
+orderRoutes.get("/", verifyAuthTokenMiddleware, listUserOrdersController);
+orderRoutes.post("/", verifyAuthTokenMiddleware, createOrderController);
 
 export default orderRoutes;

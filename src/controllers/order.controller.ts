@@ -31,9 +31,7 @@ const createOrderController = async (req: Request, res: Response) => {
 
 const listUserOrdersController = async (req: Request, res: Response) => {
   try {
-    const { userId } = req.params;
-
-    const id = userId;
+    const { id } = req.user;
 
     const orders = await listUserOrdersService({ id });
 
