@@ -9,7 +9,7 @@ import {
 
 const productRoutes = Router();
 
-productRoutes.post("", createProductController);
+productRoutes.post("/", createProductController);
 productRoutes.post(
   "/:id/additionalinfo",
   createProductAdditionalInfoController

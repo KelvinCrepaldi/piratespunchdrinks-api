@@ -4,8 +4,6 @@ export interface IUserRequest {
   name: string;
   email: string;
   password: string;
-  creditCard: ICreditCard;
-  address: IAddress;
 }
 
 export interface IUserResponse {

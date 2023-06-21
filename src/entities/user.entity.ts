@@ -49,7 +49,9 @@ export class User {
   })
   address: Address;
 
-  @OneToOne(() => CreditCard, { eager: true })
-  @JoinColumn()
+  @OneToMany(() => CreditCard, (credit_card) => credit_card.user, {
+    nullable: true,
+    eager: true,
+  })
   credit_card: CreditCard;
 }

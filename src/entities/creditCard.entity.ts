@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "./user.entity";
 
 @Entity("credit_cards")
 export class CreditCard {
@@ -8,9 +9,12 @@ export class CreditCard {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ length: 16 })
   number: string;
 
   @Column()
-  validation_data: string;
+  expiration_date: string;
+
+  @ManyToOne(() => User)
+  user: User;
 }
