@@ -8,15 +8,11 @@ import { CreditCard } from "../../entities/creditCard.entity";
 import { Address } from "../../entities/address.entity";
 
 const createUserService = async ({
-  address,
-  creditCard,
   email,
   name,
   password,
-}: IUserRequest) => {
+}: IUserRequest): Promise<User> => {
   const userRepository = AppDataSource.getRepository(User);
-  const creditCardRepository = AppDataSource.getRepository(CreditCard);
-  const AddressRepository = AppDataSource.getRepository(Address);
 
   const findUser = await userRepository.findOne({
     where: { email: email },
@@ -27,23 +23,6 @@ const createUserService = async ({
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
-
-  const newAddress = AddressRepository.create({
-    address: address.address,
-    cep: address.cep,
-    city: address.city,
-    complement: address.complement,
-    country: address.country,
-    number: address.number,
-    state: address.state,
-  });
-  await AddressRepository.save(newAddress);
-
-  const newCard = creditCardRepository.create({
-    number: creditCard.number,
-    validation_data: creditCard.validationData,
-  });
-  await creditCardRepository.save(newCard);
 
   const user = userRepository.create({
     email,

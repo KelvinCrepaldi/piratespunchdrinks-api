@@ -5,11 +5,8 @@ import { IUserRequest } from "../interfaces/user.interfaces";
 
 const createUserController = async (req: Request, res: Response) => {
   try {
-    const { address, creditCard, email, name, password }: IUserRequest =
-      req.body;
+    const { email, name, password }: IUserRequest = req.body;
     const user = await createUserService({
-      address,
-      creditCard,
       email,
       name,
       password,
