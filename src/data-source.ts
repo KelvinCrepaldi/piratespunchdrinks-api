@@ -10,7 +10,8 @@ import { AditionalInfo } from "./entities/aditionalInfo.entity";
 import { Order } from "./entities/order.entity";
 import { OrderProduct } from "./entities/orderProduct.entity";
 import { CreateTables1686804248545 } from "./migrations/1686804248545-createTables";
-
+import { ChangeUserRelations1687348222198 } from "./migrations/1687348222198-changeUserRelations";
+import { FixAddressUserRelation1687355877955 } from "./migrations/1687355877955-fixAddressUserRelation";
 const AppDataSource = new DataSource({
   type: "postgres",
   host: process.env.DB_HOST,
@@ -32,7 +33,11 @@ const AppDataSource = new DataSource({
     OrderProduct,
   ],
   subscribers: [],
-  migrations: [CreateTables1686804248545],
+  migrations: [
+    CreateTables1686804248545,
+    ChangeUserRelations1687348222198,
+    FixAddressUserRelation1687355877955,
+  ],
 });
 
 AppDataSource.initialize()

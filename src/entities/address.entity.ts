@@ -27,6 +27,6 @@ export class Address {
   @Column()
   country: string;
 
-  @ManyToOne(() => Address)
+  @ManyToOne(() => User, (user) => user.address) // Correção: especificar o nome da propriedade no segundo argumento
   user: User;
 }

@@ -45,13 +45,11 @@ export class User {
 
   @OneToMany(() => Address, (address) => address.user, {
     nullable: true,
-    eager: true,
   })
-  address: Address;
+  address: Address[];
 
   @OneToMany(() => CreditCard, (credit_card) => credit_card.user, {
     nullable: true,
-    eager: true,
   })
   credit_card: CreditCard;
 }

@@ -15,7 +15,9 @@ const authService = async ({
 }: IAuthenticationRequest): Promise<IAuthenticationResponse> => {
   const usersRepository = AppDataSource.getRepository(User);
 
-  const user = await usersRepository.findOne({ where: { email: email } });
+  const user = await usersRepository.findOne({
+    where: { email: email },
+  });
 
   if (!user) {
     throw new AppError(403, "Invalid credentials, email not found.");

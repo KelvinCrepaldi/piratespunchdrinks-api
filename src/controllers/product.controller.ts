@@ -9,7 +9,6 @@ import createCharacteristicService from "../services/product/createCharacteristi
 import createAdditionalInfoService from "../services/product/createAdditionalInfo.service";
 import listProductsService from "../services/product/listProducts.service";
 import listProductsByCategoryService from "../services/product/listProductsbyCategory.service";
-
 import seedProductsService from "../services/product/seedProducts.service";
 
 const createProductController = async (req: Request, res: Response) => {
