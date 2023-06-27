@@ -13,6 +13,7 @@ import productRoutes from "./routes/product.routes";
 import categoryRoutes from "./routes/category.routes";
 import orderRoutes from "./routes/order.routes";
 import addresRoutes from "./routes/address.routes";
+import creditCardRoutes from "./routes/creditCard.routes";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,7 +24,6 @@ const port = process.env.PORT || 3000;
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
 }); */
-
 app.use(cors());
 
 app.use(express.json());
@@ -33,6 +33,8 @@ app.use("/product", productRoutes);
 app.use("/category", categoryRoutes);
 app.use("/order", orderRoutes);
 app.use("/address", addresRoutes);
+app.use("/creditcard", creditCardRoutes);
+
 app.use("/protected", verifyAuthTokenMiddleware, (req, res) => {
   res.status(200).json("protected route");
 });
