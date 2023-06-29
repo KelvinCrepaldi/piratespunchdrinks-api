@@ -1,4 +1,7 @@
-import { ICreateCreditCardRequest } from "../../interfaces/creditCard.interfaces";
+import {
+  ICreateCreditCardRequest,
+  ICreateCreditCardResponse,
+} from "../../interfaces/creditCard.interfaces";
 import AppDataSource from "../../data-source";
 import { CreditCard } from "../../entities/creditCard.entity";
 import { User } from "../../entities/user.entity";
@@ -9,7 +12,7 @@ const createCreditCardService = async ({
   name,
   number,
   userId,
-}: ICreateCreditCardRequest): Promise<CreditCard> => {
+}: ICreateCreditCardRequest): Promise<ICreateCreditCardResponse> => {
   const userRepository = AppDataSource.getRepository(User);
   const creditCardRepository = AppDataSource.getRepository(CreditCard);
 
@@ -35,6 +38,14 @@ const createCreditCardService = async ({
 
   await creditCardRepository.save(creditCard);
 
-  return creditCard;
+  const creditCardResponse: ICreateCreditCardResponse = {
+    id: creditCard.id,
+    expiration_date: expiration_date,
+    name: name,
+    number: number,
+    userId: creditCard.user.id,
+  };
+
+  return creditCardResponse;
 };
 export default createCreditCardService;

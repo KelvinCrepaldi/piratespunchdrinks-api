@@ -12,6 +12,14 @@ export interface ICreateCreditCardRequest {
   userId: string;
 }
 
+export interface ICreateCreditCardResponse {
+  id: string;
+  name: string;
+  expiration_date: string;
+  number: string;
+  userId: string;
+}
+
 export interface IListCreditCardsRequest {
   userId: string;
 }
