@@ -16,12 +16,11 @@ export const listUserOrdersService = async ({
 
   const userOrders = await userRepository
     .createQueryBuilder("user")
-    .select(["user.name", "user.email"])
     .leftJoinAndSelect("user.orders", "order")
     .leftJoinAndSelect("order.orderProducts", "orderProduct")
     .leftJoinAndSelect("orderProduct.product", "product")
     .where("user.id = :userId", { userId: id })
     .getMany();
 
-  return userOrders[0];
+  return userOrders[0].orders;
 };
