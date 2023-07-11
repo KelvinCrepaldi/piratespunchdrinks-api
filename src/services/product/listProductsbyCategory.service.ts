@@ -1,9 +1,6 @@
 import AppDataSource from "../../data-source";
 import { Product } from "../../entities/product.entity";
-import {
-  IProductByCategoryRequest,
-  IProduct,
-} from "../../interfaces/product.interfaces";
+import { IProductByCategoryRequest } from "../../interfaces/product.interfaces";
 
 const listProductsByCategoryService = ({
   category,

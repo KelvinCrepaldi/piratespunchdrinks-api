@@ -15,7 +15,7 @@ export interface IProductAditionalInfo {
 
 export interface IProductRequest {
   name: string;
-  price: string;
+  price: number;
   amount: string;
   img_url: string;
   apresentation: string;
@@ -23,18 +23,6 @@ export interface IProductRequest {
   category: string;
   characteristic?: IProductCharacteristic[];
   additional_info?: IProductAditionalInfo[];
-}
-
-export interface IProduct {
-  name: string;
-  price: string;
-  amount: string;
-  img_url: string;
-  apresentation: string;
-  active: boolean;
-  category: ICategory | null;
-  characteristic?: ICharacteristic;
-  additional_info?: IAditionalInfo;
 }
 
 export interface IProductByCategoryRequest {
@@ -50,7 +38,7 @@ interface IProductSeedCharacteristic {
 
 export interface IProductSeed {
   name: string;
-  price: string;
+  price: number;
   amount: string;
   img_url: string;
   apresentation: string;

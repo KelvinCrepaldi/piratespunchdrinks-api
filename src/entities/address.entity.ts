@@ -1,5 +1,12 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { User } from "./user.entity";
+import { Order } from "./order.entity";
 
 @Entity("addresses")
 export class Address {
@@ -29,4 +36,7 @@ export class Address {
 
   @ManyToOne(() => User, (user) => user.address) // Correção: especificar o nome da propriedade no segundo argumento
   user: User;
+
+  @OneToMany(() => Order, (order) => order.address)
+  orders: Order;
 }

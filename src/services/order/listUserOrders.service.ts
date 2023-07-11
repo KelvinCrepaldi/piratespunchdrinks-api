@@ -18,6 +18,8 @@ export const listUserOrdersService = async ({
     .createQueryBuilder("user")
     .leftJoinAndSelect("user.orders", "order")
     .leftJoinAndSelect("order.orderProducts", "orderProduct")
+    .leftJoinAndSelect("order.address", "address")
+    .leftJoinAndSelect("order.creditCard", "creditCard")
     .leftJoinAndSelect("orderProduct.product", "product")
     .where("user.id = :userId", { userId: id })
     .getMany();

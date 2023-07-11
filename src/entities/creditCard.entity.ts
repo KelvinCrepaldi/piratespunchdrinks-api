@@ -1,5 +1,12 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { User } from "./user.entity";
+import { Order } from "./order.entity";
 
 @Entity("credit_cards")
 export class CreditCard {
@@ -17,4 +24,7 @@ export class CreditCard {
 
   @ManyToOne(() => User)
   user: User;
+
+  @OneToMany(() => Order, (order) => order.address)
+  orders: Order;
 }

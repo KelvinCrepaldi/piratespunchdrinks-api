@@ -5,9 +5,18 @@ import {
   CreateDateColumn,
   ManyToOne,
   OneToMany,
+  UpdateDateColumn,
 } from "typeorm";
 import { OrderProduct } from "./orderProduct.entity";
 import { User } from "./user.entity";
+import { CreditCard } from "./creditCard.entity";
+import { Address } from "./address.entity";
+
+enum PaymentStatus {
+  PENDING = "PENDING",
+  AUTHORIZED = "AUTHORIZED",
+  CANCELLED = "CANCELLED",
+}
 
 @Entity("orders")
 export class Order {
@@ -15,24 +24,29 @@ export class Order {
   id: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
-  @Column()
-  total: string;
+  @UpdateDateColumn()
+  updatedAt: Date;
 
-  @Column()
-  active_status: boolean;
+  @Column("decimal", { precision: 8, scale: 2, nullable: true })
+  total: number;
 
-  @Column()
-  payment_status: boolean;
-
-  @Column()
-  expired: boolean;
-
-  //credit_card
+  @Column({
+    type: "enum",
+    enum: PaymentStatus,
+    default: PaymentStatus.PENDING,
+  })
+  paymentStatus: PaymentStatus;
 
   @ManyToOne(() => User, (user) => user.orders)
   user: User;
+
+  @ManyToOne(() => CreditCard, (creditCard) => creditCard.orders)
+  creditCard: CreditCard;
+
+  @ManyToOne(() => Address, (address) => address.orders)
+  address: Address;
 
   @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.order)
   orderProducts: OrderProduct[];
