@@ -14,6 +14,7 @@ import categoryRoutes from "./routes/category.routes";
 import orderRoutes from "./routes/order.routes";
 import addresRoutes from "./routes/address.routes";
 import creditCardRoutes from "./routes/creditCard.routes";
+import promotionRoutes from "./routes/promotion.routes";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -34,6 +35,7 @@ app.use("/category", categoryRoutes);
 app.use("/order", orderRoutes);
 app.use("/address", addresRoutes);
 app.use("/creditcard", creditCardRoutes);
+app.use("/promotion", promotionRoutes);
 
 app.use("/protected", verifyAuthTokenMiddleware, (req, res) => {
   res.status(200).json("protected route");

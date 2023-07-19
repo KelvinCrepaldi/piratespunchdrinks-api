@@ -9,6 +9,7 @@ import { Category } from "./entities/categories.entity";
 import { AditionalInfo } from "./entities/aditionalInfo.entity";
 import { Order } from "./entities/order.entity";
 import { OrderProduct } from "./entities/orderProduct.entity";
+import { Promotion } from "./entities/promotion.entity";
 import { CreateTables1686804248545 } from "./migrations/1686804248545-createTables";
 import { ChangeUserRelations1687348222198 } from "./migrations/1687348222198-changeUserRelations";
 import { FixAddressUserRelation1687355877955 } from "./migrations/1687355877955-fixAddressUserRelation";
@@ -17,6 +18,8 @@ import { ChangeOrderTotalType1689041097208 } from "./migrations/1689041097208-ch
 import { ChangeProductPricePrecicionScale1689041748066 } from "./migrations/1689041748066-changeProductPricePrecicionScale";
 import { ChangeOrderTotalPrecisionScale1689042094317 } from "./migrations/1689042094317-changeOrderTotalPrecisionScale";
 import { ChangeOrderPaymentType1689045910861 } from "./migrations/1689045910861-changeOrderPaymentType";
+import { CreatePromotionsTable1689724731679 } from "./migrations/1689724731679-createPromotionsTable";
+
 const AppDataSource = new DataSource({
   type: "postgres",
   host: process.env.DB_HOST,
@@ -36,6 +39,7 @@ const AppDataSource = new DataSource({
     Category,
     Order,
     OrderProduct,
+    Promotion,
   ],
   subscribers: [],
   migrations: [
@@ -47,6 +51,7 @@ const AppDataSource = new DataSource({
     ChangeProductPricePrecicionScale1689041748066,
     ChangeOrderTotalPrecisionScale1689042094317,
     ChangeOrderPaymentType1689045910861,
+    CreatePromotionsTable1689724731679,
   ],
 });
 
