@@ -16,7 +16,7 @@ const authService = async ({
   const usersRepository = AppDataSource.getRepository(User);
 
   const user = await usersRepository.findOne({
-    where: { email: email },
+    where: { email: email, active: true },
   });
 
   if (!user) {

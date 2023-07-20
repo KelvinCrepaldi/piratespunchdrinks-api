@@ -16,3 +16,7 @@ export interface IUserResponse {
 export interface IListUserRequest {
   email: string;
 }
+
+export interface IDeleteUserRequest {
+  id: string;
+}
