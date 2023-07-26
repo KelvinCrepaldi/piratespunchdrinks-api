@@ -5,10 +5,11 @@ import { listUserOrdersService } from "../services/order/listUserOrders.service"
 
 const createOrderController = async (req: Request, res: Response) => {
   try {
-    const { products, userId, addressId, creditCardId } = req.body;
+    const { products, addressId, creditCardId } = req.body;
+    const { id } = req.user;
     const order = await createOrderService({
       products,
-      userId,
+      userId: id,
       addressId,
       creditCardId,
     });
