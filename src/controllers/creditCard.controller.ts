@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { AppError, handleError } from "../errors/appErrors";
 import createCreditCardService from "../services/creditCard/createCreditCard.service";
 import listCreditCardsService from "../services/creditCard/listCreditCards.service";
-import deleteCreditCardService from "../services/creditCard/deleteCreditcard.service";
+import deleteCreditCardService from "../services/creditCard/deleteCreditCard.service";
 
 const createCreditCardController = async (req: Request, res: Response) => {
   try {
