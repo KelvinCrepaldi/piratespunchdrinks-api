@@ -19,6 +19,9 @@ export class Product {
   id: string;
 
   @Column()
+  code: string;
+
+  @Column()
   name: string;
 
   @Column("decimal", { precision: 8, scale: 2, nullable: true })

@@ -14,6 +14,12 @@ export class Address {
   id: string;
 
   @Column()
+  reference: string;
+
+  @Column()
+  active: boolean;
+
+  @Column()
   address: string;
 
   @Column()

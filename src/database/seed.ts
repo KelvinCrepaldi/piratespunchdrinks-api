@@ -45,6 +45,7 @@ export const categorySeed: ICategoryRequest[] = [
 
 export const productsSeed: IProductRequest[] = [
   {
+    code: "PROD001",
     name: "Captain's Grog Rum",
     price: 19.99,
     amount: "750ml",
@@ -77,6 +78,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/KMPFjwn.png",
   },
   {
+    code: "PROD002",
     name: "Buccaneer's Bay Gin",
     price: 16.99,
     amount: "700ml",
@@ -109,6 +111,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/JXvMF7Z.png",
   },
   {
+    code: "PROD003",
     name: "Pirate's Punch Cocktail",
     price: 9.99,
     amount: "200ml",
@@ -141,6 +144,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/lhjZ2vz.png",
   },
   {
+    code: "PROD004",
     name: "Jolly Roger's Lager",
     price: 12.99,
     amount: "500ml",
@@ -173,6 +177,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/CYN0cB2.png",
   },
   {
+    code: "PROD005",
     name: "Mermaid's Melody Mocktail",
     price: 8.99,
     amount: "300ml",
@@ -205,6 +210,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/m60pLAN.png",
   },
   {
+    code: "PROD006",
     name: "Kraken's Fury Whiskey",
     price: 24.99,
     amount: "750ml",
@@ -237,6 +243,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/P5simgu.png",
   },
   {
+    code: "PROD006",
     name: "Treasure Island Tequila",
     price: 18.99,
     amount: "700ml",
@@ -269,6 +276,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/PVL9q1C.png",
   },
   {
+    code: "PROD007",
     name: "Siren's Song Vodka",
     price: 15.99,
     amount: "700ml",
@@ -301,6 +309,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/NMJ9z6g.png",
   },
   {
+    code: "PROD008",
     name: "Buccaneer's Brew Beer",
     price: 11.99,
     amount: "500ml",
@@ -333,6 +342,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/8sYlJHC.png",
   },
   {
+    code: "PROD009",
     name: "Shipwrecked Sangria",
     price: 14.99,
     amount: "750ml",
@@ -365,6 +375,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/dgbvXmn.png",
   },
   {
+    code: "PROD010",
     name: "Blackbeard's Dark Rum",
     price: 19.99,
     amount: "750ml",
@@ -397,6 +408,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/wOY7XrK.png",
   },
   {
+    code: "PROD011",
     name: "Captain's Cut Gin",
     price: 16.99,
     amount: "700ml",
@@ -429,6 +441,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/llaAQ6s.png",
   },
   {
+    code: "PROD012",
     name: "Treasure Trove Wine",
     price: 24.99,
     amount: "750ml",
@@ -461,6 +474,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/Ohyn9Mg.png",
   },
   {
+    code: "PROD013",
     name: "Buccaneer's Breeze Cider",
     price: 13.99,
     amount: "500ml",
@@ -493,6 +507,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/PmFHcds.png",
   },
   {
+    code: "PROD014",
     name: "Parrot's Paradise Mocktail",
     price: 9.99,
     amount: "350ml",
@@ -525,6 +540,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/xV0dNj1.png",
   },
   {
+    code: "PROD015",
     name: "Kraken's Kiss Liqueur",
     price: 17.99,
     amount: "500ml",
@@ -557,6 +573,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/G4VE8lX.png",
   },
   {
+    code: "PROD016",
     name: "Ghostly Tequila",
     price: 21.99,
     amount: "700ml",
@@ -589,6 +606,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/VJzWV7S.png",
   },
   {
+    code: "PROD017",
     name: "Jolly Roger Vodka",
     price: 15.99,
     amount: "700ml",
@@ -621,6 +639,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/qg99scH.png",
   },
   {
+    code: "PROD018",
     name: "Kraken's Curse Beer",
     price: 11.99,
     amount: "330ml",
@@ -653,6 +672,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/ld0lPL1.png",
   },
   {
+    code: "PROD019",
     name: "Corsair's Cutlass Sake",
     price: 14.99,
     amount: "500ml",
@@ -685,6 +705,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/SHA9XLw.png",
   },
   {
+    code: "PROD020",
     name: "Blackbeard's Brew Rum",
     price: 19.99,
     amount: "750ml",
@@ -717,6 +738,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/yMAy1NG.png",
   },
   {
+    code: "PROD021",
     name: "Captain's Cut Whiskey",
     price: 24.99,
     amount: "700ml",
@@ -749,6 +771,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/3D8fzhz.png",
   },
   {
+    code: "PROD022",
     name: "Seafarer's Sangria",
     price: 12.99,
     amount: "750ml",
@@ -781,6 +804,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/rglBD4G.png",
   },
   {
+    code: "PROD023",
     name: "Swashbuckler's Mocktail",
     price: 9.99,
     amount: "500ml",
@@ -813,6 +837,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/CvYAygV.png",
   },
   {
+    code: "PROD024",
     name: "Treasure Hunter Gin",
     price: 17.99,
     amount: "700ml",
@@ -845,6 +870,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/ianFRDx.png",
   },
   {
+    code: "PROD025",
     name: "Buccaneer's Wine",
     price: 13.99,
     amount: "750ml",
@@ -877,6 +903,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/6Hxdga4.png",
   },
   {
+    code: "PROD026",
     name: "Seafoam Cider",
     price: 10.99,
     amount: "500ml",
@@ -909,6 +936,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/jzTnxyA.png",
   },
   {
+    code: "PROD027",
     name: "Pirate's Punch Cocktail",
     price: 11.99,
     amount: "250ml",
@@ -941,6 +969,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/Iljpit7.png",
   },
   {
+    code: "PROD028",
     name: "Kraken's Liqueur",
     price: 15.99,
     amount: "500ml",
@@ -973,6 +1002,7 @@ export const productsSeed: IProductRequest[] = [
     img_url: "https://imgur.com/jJtHzEI.png",
   },
   {
+    code: "PROD029",
     name: "Buccaneer's Sake",
     price: 18.99,
     amount: "300ml",

@@ -4,20 +4,21 @@ import { AppError } from "../../errors/appErrors";
 import { IDeleteCreditCardRequest } from "../../interfaces/creditCard.interfaces";
 
 const deleteCreditCardService = async ({
-  userId,
   creditCardId,
 }: IDeleteCreditCardRequest) => {
   const creditCardRepository = AppDataSource.getRepository(CreditCard);
 
   const creditCard = await creditCardRepository.findOne({
-    where: { id: creditCardId, user: { id: userId } },
+    where: { id: creditCardId },
   });
 
   if (!creditCard) {
     throw new AppError(404, "Credit Card not found.");
   }
 
-  creditCardRepository.delete(creditCard);
+  creditCard.active = false;
+
+  await creditCardRepository.save(creditCard);
 
   return { message: "credit card deleted!" };
 };

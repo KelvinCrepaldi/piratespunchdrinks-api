@@ -8,7 +8,7 @@ const listCreditCardsService = async ({
   const creditCardsRepository = AppDataSource.getRepository(CreditCard);
 
   const creditCards = await creditCardsRepository.find({
-    where: { user: { id: userId } },
+    where: { user: { id: userId }, active: true },
   });
 
   return creditCards;

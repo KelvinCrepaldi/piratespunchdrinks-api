@@ -46,10 +46,12 @@ const createOrderService = async ({
   }
 
   const order = new Order();
+
   order.total = 0;
   order.user = user;
   order.creditCard = creditCard;
   order.address = address;
+  order.paymentStatus = "Pending";
   const createdOrder = await orderRepository.save(order);
   const createdOrderProducts = [];
 

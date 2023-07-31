@@ -14,6 +14,12 @@ export class CreditCard {
   id: string;
 
   @Column()
+  reference: string;
+
+  @Column()
+  active: boolean;
+
+  @Column()
   name: string;
 
   @Column({ length: 16 })

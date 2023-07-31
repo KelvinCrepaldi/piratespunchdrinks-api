@@ -9,11 +9,12 @@ import createCharacteristicService from "../services/product/createCharacteristi
 import createAdditionalInfoService from "../services/product/createAdditionalInfo.service";
 import listProductsService from "../services/product/listProducts.service";
 import listProductsByCategoryService from "../services/product/listProductsbyCategory.service";
-import seedProductsService from "../services/product/seedProducts.service";
+import seedDatabaseService from "../services/seedDatabase/seedDatabase.service";
 
 const createProductController = async (req: Request, res: Response) => {
   try {
     const {
+      code,
       active,
       apresentation,
       category,
@@ -26,6 +27,7 @@ const createProductController = async (req: Request, res: Response) => {
     }: IProductRequest = req.body;
 
     const product = await createProductService({
+      code,
       active,
       apresentation,
       category,
@@ -47,7 +49,7 @@ const createProductController = async (req: Request, res: Response) => {
 
 const seedProductsController = async (req: Request, res: Response) => {
   try {
-    const seed = seedProductsService();
+    const seed = seedDatabaseService();
     return res.status(200).json(seed);
   } catch (error) {
     if (error instanceof AppError) {

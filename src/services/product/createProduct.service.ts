@@ -8,6 +8,7 @@ import { Characteristic } from "../../entities/characteristic.entity";
 import { ICharacteristicRequest } from "../../interfaces/characteristic.interface";
 import { IAdditionalInfoRequest } from "../../interfaces/aditionalInfo.interface";
 const createProductService = async ({
+  code,
   apresentation,
   category,
   name,
@@ -31,6 +32,7 @@ const createProductService = async ({
   }
 
   const product = productRepository.create({
+    code: code,
     active: true,
     name: name,
     price: price,

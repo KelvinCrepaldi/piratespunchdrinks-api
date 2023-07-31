@@ -12,12 +12,6 @@ import { User } from "./user.entity";
 import { CreditCard } from "./creditCard.entity";
 import { Address } from "./address.entity";
 
-enum PaymentStatus {
-  PENDING = "PENDING",
-  AUTHORIZED = "AUTHORIZED",
-  CANCELLED = "CANCELLED",
-}
-
 @Entity("orders")
 export class Order {
   @PrimaryGeneratedColumn("uuid")
@@ -32,12 +26,8 @@ export class Order {
   @Column("decimal", { precision: 8, scale: 2, nullable: true })
   total: number;
 
-  @Column({
-    type: "enum",
-    enum: PaymentStatus,
-    default: PaymentStatus.PENDING,
-  })
-  paymentStatus: PaymentStatus;
+  @Column()
+  paymentStatus: string;
 
   @ManyToOne(() => User, (user) => user.orders)
   user: User;

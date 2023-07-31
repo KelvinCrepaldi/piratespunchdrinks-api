@@ -14,6 +14,7 @@ export interface IProductAditionalInfo {
 }
 
 export interface IProductRequest {
+  code: string;
   name: string;
   price: number;
   amount: string;
@@ -37,6 +38,7 @@ interface IProductSeedCharacteristic {
 }
 
 export interface IProductSeed {
+  code: string;
   name: string;
   price: number;
   amount: string;

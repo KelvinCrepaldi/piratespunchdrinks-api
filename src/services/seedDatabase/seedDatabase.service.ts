@@ -9,12 +9,14 @@ import { AditionalInfo } from "../../entities/aditionalInfo.entity";
 import { Characteristic } from "../../entities/characteristic.entity";
 import { Category } from "../../entities/categories.entity";
 import { AppError } from "../../errors/appErrors";
+import { Promotion } from "../../entities/promotion.entity";
 
-export const seedProductsService = async () => {
+export const seedDatabaseService = async () => {
   const productRepository = AppDataSource.getRepository(Product);
   const aditionalInfoRepository = AppDataSource.getRepository(AditionalInfo);
   const characteristicRepository = AppDataSource.getRepository(Characteristic);
   const categoryRepository = AppDataSource.getRepository(Category);
+  const promotionRepository = AppDataSource.getRepository(Promotion);
 
   await Promise.all(
     categorySeed.map(async (category: ICategoryRequest) => {
@@ -70,7 +72,22 @@ export const seedProductsService = async () => {
     })
   );
 
+  const products = await productRepository.find();
+  const sliceProducts = products.slice(0, 8);
+
+  const promotion = new Promotion();
+  const finalDate = new Date("2024-07-31 04:09:10.533");
+
+  promotion.type = "percent";
+  promotion.value = 10;
+  promotion.finalDate = finalDate;
+  promotion.initialDate = new Date();
+
+  promotion.products = sliceProducts;
+
+  await promotionRepository.save(promotion);
+
   return { message: "database populated!" };
 };
 
-export default seedProductsService;
+export default seedDatabaseService;

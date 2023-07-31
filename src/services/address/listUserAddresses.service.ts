@@ -7,18 +7,17 @@ import { IListUserAddresses } from "../../interfaces/address.interfaces";
 const listUserAddressesService = async ({
   id,
 }: IListUserAddresses): Promise<Address[]> => {
-  const userRepository = AppDataSource.getRepository(User);
+  const addressRepository = AppDataSource.getRepository(Address);
 
-  const user = await userRepository.findOne({
-    where: { id: id },
-    relations: ["address"],
+  const address = await addressRepository.find({
+    where: { user: { id: id }, active: true },
   });
 
-  if (!user) {
+  if (!address) {
     throw new AppError(404, "User not found");
   }
 
-  return user.address;
+  return address;
 };
 
 export default listUserAddressesService;

@@ -1,5 +1,4 @@
 import AppDataSource from "../../data-source";
-
 import {
   IAddressRequest,
   IAddressResponse,
@@ -7,6 +6,9 @@ import {
 import { Address } from "../../entities/address.entity";
 import { User } from "../../entities/user.entity";
 import { AppError } from "../../errors/appErrors";
+
+import short from "short-uuid";
+import { v4 as uuid } from "uuid";
 
 const createAddressService = async ({
   address,
@@ -29,6 +31,8 @@ const createAddressService = async ({
 
   const newAddress = new Address();
 
+  newAddress.reference = uuid();
+  newAddress.active = true;
   newAddress.address = address;
   newAddress.cep = cep;
   newAddress.city = city;

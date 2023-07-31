@@ -7,13 +7,15 @@ import { IDeleteAddressRequest } from "../../interfaces/address.interfaces";
 const deleteAddressService = async ({ id }: IDeleteAddressRequest) => {
   const addressRepository = AppDataSource.getRepository(Address);
 
-  const address = addressRepository.findOne({ where: { id: id } });
+  const address = await addressRepository.findOne({ where: { id: id } });
 
   if (!address) {
     throw new AppError(404, "Address not found");
   }
 
-  await addressRepository.delete(id);
+  address.active = false;
+
+  await addressRepository.save(address);
 
   return { message: "Address deleted" };
 };
