@@ -6,12 +6,13 @@ import { IUserRequest } from "../../interfaces/user.interfaces";
 import { User } from "../../entities/user.entity";
 import { CreditCard } from "../../entities/creditCard.entity";
 import { Address } from "../../entities/address.entity";
+import jwt from "jsonwebtoken";
 
 const createUserService = async ({
   email,
   name,
   password,
-}: IUserRequest): Promise<User> => {
+}: IUserRequest): Promise<any> => {
   const userRepository = AppDataSource.getRepository(User);
 
   const findUser = await userRepository.findOne({
@@ -34,7 +35,15 @@ const createUserService = async ({
 
   await userRepository.save(user);
 
-  return user;
+  const token = jwt.sign(
+    { id: user.id, adm: user.adm },
+    process.env.SECRET_KEY as string,
+    {
+      expiresIn: process.env.TOKEN_EXPIRES_TIME,
+    }
+  );
+
+  return { token, user };
 };
 
 export default createUserService;
