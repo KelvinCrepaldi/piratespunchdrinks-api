@@ -21,6 +21,14 @@ const createOrderService = async ({
   const addressRepository = AppDataSource.getRepository(Address);
   const creditCardRepository = AppDataSource.getRepository(CreditCard);
 
+  //substituir por validação yup
+  if (!addressId) {
+    throw new AppError(400, "addressId required");
+  }
+  if (!creditCardId) {
+    throw new AppError(400, "creditCardId required");
+  }
+
   const user = await userRepository.findOne({
     where: { id: userId },
   });
