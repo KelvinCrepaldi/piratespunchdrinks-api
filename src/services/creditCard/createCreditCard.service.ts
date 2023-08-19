@@ -17,14 +17,6 @@ const createCreditCardService = async ({
   const userRepository = AppDataSource.getRepository(User);
   const creditCardRepository = AppDataSource.getRepository(CreditCard);
 
-  const cardAlreadyExist = await creditCardRepository.findOne({
-    where: { number: number },
-  });
-
-  if (cardAlreadyExist) {
-    throw new AppError(401, "Credit Card number already exists!");
-  }
-
   const user = await userRepository.findOne({ where: { id: userId } });
 
   if (!user) {
