@@ -96,15 +96,13 @@ const createProductCharacteristicController = async (
 
 const listProductsController = async (req: Request, res: Response) => {
   try {
-    const category = String(req.query.category);
+    var search = req.query.search as string;
+    var category = req.query.category as string;
+    var take = req.query.take as string;
+    var page = req.query.page as string;
 
-    if (category !== "undefined") {
-      const product = await listProductsByCategoryService({ category });
-      return res.status(200).json(product);
-    } else {
-      const product = await listProductsService();
-      return res.status(200).json(product);
-    }
+    const product = await listProductsService({ search, category, take, page });
+    return res.status(200).json(product);
   } catch (error) {
     if (error instanceof AppError) {
       handleError(error, res);
