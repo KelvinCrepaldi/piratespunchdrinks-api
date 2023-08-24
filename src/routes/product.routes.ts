@@ -19,7 +19,10 @@ productRoutes.post(
   createProductCharacteristicController
 );
 
-productRoutes.get("/:serach?/:page?/:take?/:category?", listProductsController);
+productRoutes.get(
+  "/:serach?/:page?/:take?/:category?/:name?/:date?/:price?",
+  listProductsController
+);
 
 productRoutes.post("/seedDatabase", seedProductsController);
 

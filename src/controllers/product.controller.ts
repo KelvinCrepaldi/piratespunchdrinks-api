@@ -100,8 +100,19 @@ const listProductsController = async (req: Request, res: Response) => {
     var category = req.query.category as string;
     var take = req.query.take as string;
     var page = req.query.page as string;
+    var name = req.query.name as string;
+    var date = req.query.date as string;
+    var price = req.query.price as string;
 
-    const product = await listProductsService({ search, category, take, page });
+    const product = await listProductsService({
+      search,
+      category,
+      take,
+      page,
+      name,
+      date,
+      price,
+    });
     return res.status(200).json(product);
   } catch (error) {
     if (error instanceof AppError) {

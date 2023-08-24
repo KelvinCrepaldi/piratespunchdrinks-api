@@ -1,12 +1,15 @@
-import { Like } from "typeorm";
+import { FindOptionsOrderValue, Like } from "typeorm";
 import AppDataSource from "../../data-source";
 import { Product } from "../../entities/product.entity";
 
 interface IListProductsServiceRequest {
+  name?: string;
+  date?: string;
   search?: string;
   category?: string;
   take?: string;
   page?: string;
+  price?: string;
 }
 
 interface IListProductsServiceResponse {
@@ -30,14 +33,6 @@ const paginateResponse = (
 
   console.log({ lastPage, nextPage, prevPage });
 
-  console.log({
-    data: [...result],
-    count: total,
-    currentPage: page,
-    lastPage: lastPage,
-    nextPage: nextPage,
-    prevPage: prevPage,
-  });
   return {
     data: [...result],
     count: total,
@@ -49,9 +44,12 @@ const paginateResponse = (
 };
 
 const listProductsService = async ({
-  search = "",
-  category = "",
-  take = "10",
+  name = undefined,
+  date = undefined,
+  price = undefined,
+  search = undefined,
+  category = undefined,
+  take = "20",
   page = "1",
 }: IListProductsServiceRequest): Promise<IListProductsServiceResponse> => {
   const productsRepository = AppDataSource.getRepository(Product);
@@ -59,26 +57,18 @@ const listProductsService = async ({
   let numberPage = parseInt(page);
   const skip = (numberPage - 1) * numberTake;
 
-  const products = await productsRepository.findAndCount({
-    where: category
-      ? [
-          {
-            active: true,
-            category: { name: Like("%" + category + "%") },
-          },
-        ]
-      : [
-          {
-            active: true,
-            name: Like("%" + search + "%"),
-          },
-          {
-            active: true,
-            category: { name: Like("%" + search + "%") },
-          },
-        ],
+  const filter = [];
 
-    order: { name: "DESC" },
+  search && filter.push({ name: Like("%" + search + "%") });
+  category && filter.push({ category: { name: Like("%" + category + "%") } });
+
+  const products = await productsRepository.findAndCount({
+    where: filter,
+    order: {
+      price: price ? (price as FindOptionsOrderValue) : undefined,
+      name: name ? (name as FindOptionsOrderValue) : undefined,
+      created_at: date ? (date as FindOptionsOrderValue) : undefined,
+    },
     take: numberTake,
     skip: skip,
   });
