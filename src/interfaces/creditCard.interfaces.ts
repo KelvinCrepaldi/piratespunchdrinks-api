@@ -1,8 +1,11 @@
 import { CreditCard } from "../entities/creditCard.entity";
 
 export interface ICreditCard {
+  name: string;
+  reference: string;
   number: string;
   validationData: string;
+  active: boolean;
 }
 
 export interface ICreateCreditCardRequest {
@@ -27,4 +30,16 @@ export interface IListCreditCardsRequest {
 export interface IDeleteCreditCardRequest {
   userId: string;
   creditCardId: string;
+}
+
+export interface IUpdateCreditCardRequest {
+  userId: string;
+  creditCardId: string;
+  name?: string;
+  number?: string;
+  expiration_date?: string;
+}
+
+export interface IUpdateCreditCardResponse {
+  message: string;
 }

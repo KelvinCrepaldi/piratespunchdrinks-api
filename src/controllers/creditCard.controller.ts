@@ -3,6 +3,7 @@ import { AppError, handleError } from "../errors/appErrors";
 import createCreditCardService from "../services/creditCard/createCreditCard.service";
 import listCreditCardsService from "../services/creditCard/listCreditCards.service";
 import deleteCreditCardService from "../services/creditCard/deleteCreditCard.service";
+import updateCreditCardService from "../services/creditCard/updateCreditCard.service";
 
 const createCreditCardController = async (req: Request, res: Response) => {
   try {
@@ -56,8 +57,31 @@ const deleteCreditCardController = async (req: Request, res: Response) => {
   }
 };
 
+const updateCreditCardController = (req: Request, res: Response) => {
+  try {
+    const { name, number, expiration_date } = req.body;
+    const userId = req.user.id;
+    const { creditCardId } = req.params;
+
+    const creditCard = updateCreditCardService({
+      name,
+      number,
+      expiration_date,
+      userId,
+      creditCardId,
+    });
+
+    return res.status(200).json(creditCard);
+  } catch (error) {
+    if (error instanceof AppError) {
+      handleError(error, res);
+    }
+  }
+};
+
 export {
   createCreditCardController,
   listCreditCardsController,
   deleteCreditCardController,
+  updateCreditCardController,
 };

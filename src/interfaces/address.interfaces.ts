@@ -42,3 +42,17 @@ export interface IAddressResponse {
 export interface IListUserAddresses {
   id: string;
 }
+
+export interface IUpdateAddressRequest {
+  address?: string;
+  cep?: string;
+  number?: string;
+  complement?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  userId: string;
+  addressId: string;
+}
+
+export interface IUpdateAddressResponse {}

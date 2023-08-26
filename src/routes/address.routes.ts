@@ -3,6 +3,7 @@ import {
   createAddressController,
   deleteAddressController,
   listUserAddressesController,
+  updateAddressController,
 } from "../controllers/address.controller";
 import verifyAuthTokenMiddleware from "../middleware/verifyAuthToken.middleware";
 
@@ -15,5 +16,10 @@ addressRoutes.delete(
   deleteAddressController
 );
 addressRoutes.get("/", verifyAuthTokenMiddleware, listUserAddressesController);
+addressRoutes.patch(
+  "/:addressId",
+  verifyAuthTokenMiddleware,
+  updateAddressController
+);
 
 export default addressRoutes;
