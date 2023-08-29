@@ -49,3 +49,7 @@ export interface IProductSeed {
   characteristic?: IProductSeedCharacteristic[];
   additional_info?: IProductSeedAddInfo[];
 }
+
+export interface IListProductServiceRequest {
+  code: string;
+}

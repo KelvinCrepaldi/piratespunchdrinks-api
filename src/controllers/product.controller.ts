@@ -8,8 +8,8 @@ import createProductService from "../services/product/createProduct.service";
 import createCharacteristicService from "../services/product/createCharacteristic.service";
 import createAdditionalInfoService from "../services/product/createAdditionalInfo.service";
 import listProductsService from "../services/product/listProducts.service";
-import listProductsByCategoryService from "../services/product/listProductsbyCategory.service";
 import seedDatabaseService from "../services/seedDatabase/seedDatabase.service";
+import listProductService from "../services/product/listProduct.service";
 
 const createProductController = async (req: Request, res: Response) => {
   try {
@@ -94,6 +94,20 @@ const createProductCharacteristicController = async (
   }
 };
 
+const listProductController = async (req: Request, res: Response) => {
+  try {
+    const code = req.params.code;
+
+    const product = await listProductService({ code });
+
+    return res.status(200).json(product);
+  } catch (error) {
+    if (error instanceof AppError) {
+      handleError(error, res);
+    }
+  }
+};
+
 const listProductsController = async (req: Request, res: Response) => {
   try {
     var search = req.query.search as string;
@@ -125,6 +139,7 @@ export {
   createProductController,
   createProductAdditionalInfoController,
   createProductCharacteristicController,
+  listProductController,
   listProductsController,
   seedProductsController,
 };

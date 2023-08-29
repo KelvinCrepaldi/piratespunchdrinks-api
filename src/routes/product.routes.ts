@@ -5,6 +5,7 @@ import {
   createProductAdditionalInfoController,
   createProductCharacteristicController,
   seedProductsController,
+  listProductController,
 } from "../controllers/product.controller";
 
 const productRoutes = Router();
@@ -19,8 +20,10 @@ productRoutes.post(
   createProductCharacteristicController
 );
 
+productRoutes.get("/detail/:code", listProductController);
+
 productRoutes.get(
-  "/:serach?/:page?/:take?/:category?/:name?/:date?/:price?",
+  "/list/:serach?:page?:take?:category?:name?:date?:price?",
   listProductsController
 );
 
